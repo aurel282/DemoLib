@@ -1,5 +1,4 @@
 import SortAlgo.Algo
-import array
 import random
 import time
 
