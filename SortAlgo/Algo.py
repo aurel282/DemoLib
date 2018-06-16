@@ -1,5 +1,6 @@
 ####    Comparaison sort algorithm  ####
 
+### ToDO : 20/25
 
 def quicksort(myarray):
     #print("quicksort")
@@ -60,20 +61,100 @@ def mergesort(myarray):
         return myarray
 
 
-def inplacemergesort():
-    print("StartFastSort")
+def inplacemergesort(myarray):
+    #print("inplacemergesort")
+    if len(myarray) <= 1:
+        return myarray
+
+    mid = int(len(myarray) / 2)
+
+    left = myarray[0:mid]
+    right = myarray[mid:(len(myarray))]
+
+    print
+    left
+    print
+    right
+    # exit()
+
+    left = inplacemergesort(left)
+    right = inplacemergesort(right)
+    result = []
+    while len(left) > 0 and len(right) > 0:
+        lv = left[0]
+        rv = right[0]
+        if lv <= rv:
+            result.append(lv)
+            left.pop(0)
+        else:
+            result.append(rv)
+            right.pop(0)
+    while len(left) > 0:
+        result.append(left.pop(0))
+
+    while len(right) > 0:
+        result.append(right.pop(0))
+
+    return result;
 
 
-def heapsort():
-    print("StartFastSort")
+def heapsort(myarray):
+    #print("heapsort")
+    n = len(myarray)
+
+    # Build a maxheap.
+    for i in range(n, -1, -1):
+        heapify(myarray, n, i)
+
+    # One by one extract elements
+    for i in range(n - 1, 0, -1):
+        myarray[i], myarray[0] = myarray[0], myarray[i]  # swap
+        heapify(myarray, i, 0)
+
+    return myarray
 
 
-def insertionsort():
-    print("StartFastSort")
+def heapify(arr, n, i):
+    largest = i  # Initialize largest as root
+    l = 2 * i + 1     # left = 2*i + 1
+    r = 2 * i + 2     # right = 2*i + 2
+
+    # See if left child of root exists and is
+    # greater than root
+    if l < n and arr[i] < arr[l]:
+        largest = l
+
+    # See if right child of root exists and is
+    # greater than root
+    if r < n and arr[largest] < arr[r]:
+        largest = r
+
+    # Change root, if needed
+    if largest != i:
+        arr[i],arr[largest] = arr[largest],arr[i]  # swap
+
+        # Heapify the root.
+        heapify(arr, n, largest)
+
+
+def insertionsort(myarray):
+    #print("insertionsort")
+    for index in range(1, len(myarray)):
+
+        currentvalue = myarray[index]
+        position = index
+
+        while position > 0 and myarray[position - 1] > currentvalue:
+            myarray[position] = myarray[position - 1]
+            position = position - 1
+
+            myarray[position] = currentvalue
+
+    return myarray
 
 
 def introsort():
-    print("StartFastSort")
+    print("introsort")
 
 
 def selectionsort():

@@ -18,7 +18,7 @@ def __main__():
     print(myarray)
 
     print("quicksort")
-    myarraycopy = myarray
+    myarraycopy = myarray.copy()
     init = time.time()
     print(SortAlgo.Algo.quicksort(myarraycopy))
     end = time.time()
@@ -26,7 +26,7 @@ def __main__():
     print(tquicksort)
 
     print("mergesort")
-    myarraycopy = myarray
+    myarraycopy = myarray.copy()
     init = time.time()
     print(SortAlgo.Algo.mergesort(myarraycopy))
     end = time.time()
@@ -34,5 +34,29 @@ def __main__():
     print(tmergesort)
 
 
+    print("inplacemergesort")
+    myarraycopy = myarray.copy()
+    init = time.time()
+    print(SortAlgo.Algo.inplacemergesort(myarraycopy))
+    end = time.time()
+    tinplacemergesort = end - init
+    print(tinplacemergesort)
+
+    print("heapsort")
+    myarraycopy = myarray.copy()
+    init = time.time()
+    print(SortAlgo.Algo.heapsort(myarraycopy))
+    end = time.time()
+    theapsort = end - init
+    print(theapsort)
+
+
+    print("insertionsort")
+    myarraycopy = myarray.copy()
+    init = time.time()
+    print(SortAlgo.Algo.insertionsort(myarraycopy))
+    end = time.time()
+    tinsertionsort= end - init
+    print(tinsertionsort)
 
 __main__()
